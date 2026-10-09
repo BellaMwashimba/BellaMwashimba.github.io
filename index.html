@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WalkOut: check before you leave</title>
+  <meta name="description" content="A customizable checklist that helps college students remember everything before they leave the dorm.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Familjen+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <h1 class="wordmark">WalkOut</h1>
+      <p class="tagline">Pick where you're headed and check the list before the door closes behind you.</p>
+    </header>
+
+    <main>
+      <section class="destinations" aria-labelledby="dest-heading">
+        <h2 id="dest-heading" class="section-title">Where to?</h2>
+        <div id="destinations" class="chips"></div>
+        <form id="add-destination" class="add-row" autocomplete="off" hidden>
+          <label class="sr-only" for="new-destination">New destination name</label>
+          <input id="new-destination" type="text" maxlength="40" placeholder="New destination, like Study group">
+          <button type="submit" class="btn">Add destination</button>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="list-heading">
+        <div class="panel-head">
+          <h2 id="list-heading" class="panel-title">Going to <span id="dest-name"></span></h2>
+          <button id="edit-toggle" type="button" class="btn btn-quiet" aria-pressed="false">Edit lists</button>
+        </div>
+
+        <div class="group">
+          <h3 class="group-title">Always bring</h3>
+          <ul id="essentials-list" class="items"></ul>
+          <form class="add-row" data-target="essentials" autocomplete="off" hidden>
+            <label class="sr-only" for="new-essential">Add an item to every list</label>
+            <input id="new-essential" type="text" maxlength="60" placeholder="Add to every list, like Student ID">
+            <button type="submit" class="btn">Add item</button>
+          </form>
+        </div>
+
+        <div class="group">
+          <h3 id="dest-items-heading" class="group-title"></h3>
+          <ul id="dest-list" class="items"></ul>
+          <form class="add-row" data-target="destination" autocomplete="off" hidden>
+            <label class="sr-only" for="new-item">Add an item to this destination</label>
+            <input id="new-item" type="text" maxlength="60" placeholder="Add an item for this destination">
+            <button type="submit" class="btn">Add item</button>
+          </form>
+        </div>
+
+        <button id="delete-destination" type="button" class="btn btn-danger" hidden>Delete this destination</button>
+      </section>
+    </main>
+  </div>
+
+  <footer class="exit-bar">
+    <div class="exit-inner">
+      <p id="status" class="status"></p>
+      <button id="exit-btn" type="button" class="exit-sign" disabled>Ready to walk out</button>
+    </div>
+    <p id="toast" class="toast" role="status" aria-live="polite"></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
